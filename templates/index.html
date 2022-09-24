@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Список задач 
+{% endblock %}
+
+
+{% block content %}
+<h1>Список продуктов</h1>
+{% for product in products %}
+{{ product.name }} 
+{{ product.price }} 
+<img src="{{ product.img }}" width="150", height="150" alt="{{ product.name }}">
+<a href="#">see more >>></a>
+{% endfor %}  
+
+
+
+
+{% endblock %}
