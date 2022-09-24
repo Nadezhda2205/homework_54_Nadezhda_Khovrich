@@ -7,13 +7,12 @@
 
 {% block content %}
 <h1>Список продуктов</h1>
-{% for product in products %}
-{{ product.name }} 
+{{ product.name }}
+{{ product.category }} 
 {{ product.price }} 
 <img src="{{ product.img }}" width="150", height="150" alt="{{ product.name }}">
-<a href="{% url 'product_detail' product.pk  %}">see more >>></a>
-{% endfor %}  
-
+{{ product.description }}
+{{ product.created_at }}
 
 
 
