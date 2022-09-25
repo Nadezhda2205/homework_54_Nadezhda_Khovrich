@@ -49,3 +49,11 @@ def product_add_view(request: WSGIRequest):
     }
 
     return render(request=request, template_name='product_add.html', context=context)
+
+
+def categories_view(request):
+    categories = Category.objects.all()
+    context = {
+        'categories': categories,
+    }
+    return render(request=request, template_name='categories.html', context=context)

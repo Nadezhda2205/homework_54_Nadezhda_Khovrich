@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Список задач 
+{% endblock %}
+
+
+{% block content %}
+<h1>Список категорий</h1>
+
+{% for category in categories %}
+{{ category.name }} <a href="#">Edit</a><a href="#">Delete</a><br>
+{% endfor %}
+
+
+
+{% endblock %}
