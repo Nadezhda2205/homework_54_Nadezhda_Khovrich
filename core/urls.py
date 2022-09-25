@@ -1,6 +1,13 @@
 from django.contrib import admin
 from django.urls import path
-from products.views import products_view, product_view, category_add_view, product_add_view, categories_view
+from products.views import (
+    products_view,
+    product_view,
+    category_add_view,
+    product_add_view,
+    categories_view,
+    category_del_view,
+    category_edit_view)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -10,4 +17,6 @@ urlpatterns = [
     path('categories/add/', category_add_view, name='category_add'),
     path('product/add/', product_add_view, name='product_add'),
     path('categories/', categories_view, name='categories'),
+    path('categories/<int:pk>/del', category_del_view, name='category_del'),
+    path('categories/<int:pk>/edit', category_edit_view, name='category_edit'),
 ]

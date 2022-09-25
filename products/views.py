@@ -57,3 +57,27 @@ def categories_view(request):
         'categories': categories,
     }
     return render(request=request, template_name='categories.html', context=context)
+
+
+def category_del_view(request, pk):
+    Category.objects.filter(pk=pk).delete()
+    return redirect('categories')
+
+def category_edit_view(request, pk):
+    category: Category = get_object_or_404(Category, pk=pk)
+    if request.method == 'POST':
+        category.name = request.POST.get('name')
+        category.description = request.POST.get('description')
+        category.save()
+        return redirect('categories')
+
+    context = {
+        'category': category,
+    }
+    return render(request=request, template_name='category_edit.html', context=context)
+
+
+
+    return render(request=request, template_name='category_edit.html')
+
+

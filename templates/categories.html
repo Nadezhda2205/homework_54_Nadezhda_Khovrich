@@ -9,7 +9,7 @@
 <h1>Список категорий</h1>
 
 {% for category in categories %}
-{{ category.name }} <a href="#">Edit</a><a href="#">Delete</a><br>
+{{ category.name }} <a href="{% url 'category_edit' category.pk %}">Edit</a><a href="{% url 'category_del' category.pk %}">Delete</a><br>
 {% endfor %}
 
 

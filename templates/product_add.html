@@ -9,8 +9,8 @@
     <h5>Add product</h5>
     <form action="" method="POST">
         {% csrf_token %}
-        <p><input type="text" name="name" placeholder="title"></p>
-        <p><input type="number" name="price" placeholder="price"></p>
+        <p><input type="text" name="name" placeholder="title" required></p>
+        <p><input type="number" name="price" placeholder="price" required></p>
         <p><input type="text" name="img" placeholder="img_url"></p>
         <select name="category">
             {% for category in categories %}
