@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from products.views import products_view, product_view, category_add_view
+from products.views import products_view, product_view, category_add_view, product_add_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -8,4 +8,5 @@ urlpatterns = [
     path('products/', products_view),
     path('products/<int:pk>/', product_view, name='product_detail'),
     path('categories/add/', category_add_view, name='category_add'),
+    path('product/add/', product_add_view, name='product_add'),
 ]
