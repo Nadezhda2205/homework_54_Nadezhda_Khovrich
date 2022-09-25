@@ -13,7 +13,7 @@
 <img src="{{ product.img }}" width="150", height="150" alt="{{ product.name }}">
 {{ product.description }}
 {{ product.created_at }}
-
-
+<a href="">Edit</a>
+<a href="{% url 'product_del' product.pk %}">Delete</a>
 
 {% endblock %}

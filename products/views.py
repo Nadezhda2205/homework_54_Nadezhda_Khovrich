@@ -77,7 +77,6 @@ def category_edit_view(request, pk):
     return render(request=request, template_name='category_edit.html', context=context)
 
 
-
-    return render(request=request, template_name='category_edit.html')
-
-
+def product_del_view(request, pk):
+    Product.objects.filter(pk=pk).delete()
+    return redirect('index')
