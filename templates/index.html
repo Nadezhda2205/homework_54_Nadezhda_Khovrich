@@ -1,20 +1,29 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
-    Список задач 
+    Интернет магазин 
 {% endblock %}
-
 
 {% block content %}
 <h1>Список продуктов</h1>
 {% for product in products %}
-{{ product.name }} 
-{{ product.price }} 
-<img src="{{ product.img }}" width="150", height="150" alt="{{ product.name }}">
-<a href="{% url 'product_detail' product.pk  %}">see more >>></a>
+<div class="card mb-3 text-dark bg-light" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ product.img }}" class="img-fluid rounded-start" alt="product">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.category }}</p>
+          <p class="card-text"><small class="text-muted">Цена: {{ product.price }} тг.</small></p>
+          <a href="{% url 'product_detail' product.pk  %}">see more >>></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 {% endfor %}  
-
-
-
 
 {% endblock %}

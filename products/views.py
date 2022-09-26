@@ -63,6 +63,7 @@ def category_del_view(request, pk):
     Category.objects.filter(pk=pk).delete()
     return redirect('categories')
 
+
 def category_edit_view(request, pk):
     category: Category = get_object_or_404(Category, pk=pk)
     if request.method == 'POST':
@@ -80,3 +81,26 @@ def category_edit_view(request, pk):
 def product_del_view(request, pk):
     Product.objects.filter(pk=pk).delete()
     return redirect('index')
+
+
+def product_edit_view(request, pk):
+    product: Product = get_object_or_404(Product, pk=pk)
+    if request.method == 'POST':
+        category_name = request.POST.get('category')
+        category: Category = Category.objects.get(name=category_name)
+
+        product.name = request.POST.get('name')
+        product.description = request.POST.get('description')
+        product.category = category
+        product.price = request.POST.get('price')
+        product.img = request.POST.get('img')
+        product.save()
+        return redirect('product_detail', pk=product.pk)
+
+    categories = Category.objects.all()
+    context = {
+        'categories': categories,
+        'product': product
+    }
+    return render(request=request, template_name='product_edit.html', context=context)
+

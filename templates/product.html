@@ -1,19 +1,32 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Список задач 
+    Продукты 
 {% endblock %}
 
 
 {% block content %}
-<h1>Список продуктов</h1>
-{{ product.name }}
-{{ product.category }} 
-{{ product.price }} 
-<img src="{{ product.img }}" width="150", height="150" alt="{{ product.name }}">
-{{ product.description }}
-{{ product.created_at }}
-<a href="">Edit</a>
-<a href="{% url 'product_del' product.pk %}">Delete</a>
+<h1>Дополнительная информация</h1>
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{ product.img }}" class="img-fluid rounded-start" alt="{{ product.name }}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">Цена: {{ product.price }} </p>
+
+          <p class="card-text">{{ product.category }} </p>
+          <p class="card-text"><small class="text-muted">{{ product.description }}</small></p>
+          <p class="card-text">{{ product.created_at }}</p>
+          <a href="{% url 'product_edit' product.pk %}">Edit</a>
+          <a href="{% url 'product_del' product.pk %}">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 {% endblock %}
