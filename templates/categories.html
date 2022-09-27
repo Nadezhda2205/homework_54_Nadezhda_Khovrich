@@ -2,19 +2,19 @@
 {% load static %}
 
 {% block title %}
-    Список задач 
+    Categories 
 {% endblock %}
 
 
 {% block content %}
 <h1>Список категорий</h1>
-
 {% for category in categories %}
-{{ category.name }} 
-<a href="{% url 'category_edit' category.pk %}">Edit</a>
-<a href="{% url 'category_del' category.pk %}">Delete</a><br>
-{% endfor %}
 
+<div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+    <div class="card-header">{{ category.name }} </div>
+        <p><a class="text-white bg-secondary" href="{% url 'category_edit' category.pk %}">Edit</a>
+        <a class="text-white bg-secondary" href="{% url 'category_del' category.pk %}">Delete</a></p>
+  </div>
+  {% endfor %}
 
-
-{% endblock %}
+  {% endblock %}
